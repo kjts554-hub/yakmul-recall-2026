@@ -80,6 +80,7 @@
     select.append(makeOption('all', `전체 강좌 · ${BANK.length}문제`));
     const units = [...new Map(BANK.map(q => [q.unit_id, {id:q.unit_id,label:q.unit_label,year:q.year}])).values()];
     units.sort((a,b) => unitNumber(a.id)-unitNumber(b.id));
+    $('endUnit').append(makeOption('', '범위를 지정할 때 선택'));
     for (const unit of units) $('endUnit').append(makeOption(unit.id, unit.label));
     for (const year of [2026,2025]) {
       const group = document.createElement('optgroup');
@@ -99,9 +100,9 @@
     const start = $('unit').value;
     const end = $('endUnit');
     end.disabled = !start.startsWith('unit:');
-    for (const option of end.options) option.disabled = !end.disabled && unitNumber(option.value) < unitNumber(start);
-    if (end.disabled) { end.value = end.options[0]?.value || ''; return; }
-    if (!unitExists(state.settings.endUnit) || unitNumber(state.settings.endUnit) < unitNumber(start)) state.settings.endUnit = start;
+    for (const option of end.options) option.disabled = !end.disabled && (!option.value || unitNumber(option.value) < unitNumber(start));
+    if (end.disabled) { end.value = ''; return; }
+    if (!state.settings.endUnit?.startsWith('unit:') || !unitExists(state.settings.endUnit) || unitNumber(state.settings.endUnit) < unitNumber(start)) state.settings.endUnit = start;
     end.value = state.settings.endUnit;
   }
   function updateStart() {
