@@ -5,13 +5,14 @@
   const KEY = 'drug-memory-full-v1';
   const $ = id => document.getElementById(id);
   const today = () => new Intl.DateTimeFormat('en-CA', {timeZone:'Asia/Seoul',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());
-  const fresh = () => ({schema_version:1, settings:{unit:'all', importance:3}, records:{}, session:null});
+  const fresh = () => ({schema_version:1, settings:{unit:'all', endUnit:'all', importance:3}, records:{}, session:null});
   let state = (() => {
     try {
       const value = JSON.parse(localStorage.getItem(KEY) || 'null');
       if (!validState(value)) return fresh();
       if (!sessionMatchesBank(value.session)) value.session = null;
       if (!unitExists(value.settings.unit)) value.settings.unit = 'all';
+      if (!unitExists(value.settings.endUnit)) value.settings.endUnit = value.settings.unit;
       return value;
     } catch { return fresh(); }
   })();
@@ -22,6 +23,7 @@
   function unitExists(unit) {
     return ['all','year:2025','year:2026', ...BANK.map(q => q.unit_id)].includes(unit);
   }
+  const unitNumber = id => Number(id.slice(5).split('-')[0]);
 
   function validState(value) {
     if (!value || value.schema_version !== 1 || !value.settings || !value.records || typeof value.records !== 'object' || Array.isArray(value.records)) return false;
@@ -56,8 +58,10 @@
   function threshold() { return Number(document.querySelector('input[name="importance"]:checked').value); }
   function inScope() {
     const unit = $('unit').value;
+    const end = $('endUnit').value;
     return BANK.filter(q => q.importance >= threshold() && (
-      unit === 'all' || (unit.startsWith('year:') ? q.year === Number(unit.slice(5)) : q.unit_id === unit)
+      unit === 'all' || (unit.startsWith('year:') ? q.year === Number(unit.slice(5)) :
+        unitNumber(q.unit_id) >= unitNumber(unit) && unitNumber(q.unit_id) <= unitNumber(end))
     ));
   }
   function show(name) {
@@ -75,6 +79,8 @@
     const select = $('unit');
     select.append(makeOption('all', `전체 강좌 · ${BANK.length}문제`));
     const units = [...new Map(BANK.map(q => [q.unit_id, {id:q.unit_id,label:q.unit_label,year:q.year}])).values()];
+    units.sort((a,b) => unitNumber(a.id)-unitNumber(b.id));
+    for (const unit of units) $('endUnit').append(makeOption(unit.id, unit.label));
     for (const year of [2026,2025]) {
       const group = document.createElement('optgroup');
       group.label = year === 2025 ? '2025 참고' : '2026 강의록·필기';
@@ -86,7 +92,17 @@
       select.append(group);
     }
     select.value = state.settings.unit;
+    updateEndUnits();
     document.querySelector(`input[name="importance"][value="${state.settings.importance}"]`).checked = true;
+  }
+  function updateEndUnits() {
+    const start = $('unit').value;
+    const end = $('endUnit');
+    end.disabled = !start.startsWith('unit:');
+    for (const option of end.options) option.disabled = !end.disabled && unitNumber(option.value) < unitNumber(start);
+    if (end.disabled) { end.value = end.options[0]?.value || ''; return; }
+    if (!unitExists(state.settings.endUnit) || unitNumber(state.settings.endUnit) < unitNumber(start)) state.settings.endUnit = start;
+    end.value = state.settings.endUnit;
   }
   function updateStart() {
     const pool = inScope();
@@ -228,6 +244,7 @@
       if (!unitExists(state.settings.unit)) state.settings.unit = 'all';
       save();
       $('unit').value = state.settings.unit;
+      updateEndUnits();
       document.querySelector(`input[name="importance"][value="${state.settings.importance}"]`).checked = true;
       $('backupNotice').textContent = '기존 기록을 백업한 뒤 가져온 기록으로 복원했습니다.';
       if (state.session?.stage === 'result') renderResult();
@@ -239,7 +256,8 @@
 
   populateUnits();
   $('classificationCount').textContent = window.QUESTION_BANK_META?.classification_only ?? '–';
-  $('unit').addEventListener('change', () => {state.settings.unit=$('unit').value;save();updateStart();});
+  $('unit').addEventListener('change', () => {state.settings.unit=$('unit').value;state.settings.endUnit=state.settings.unit;updateEndUnits();save();updateStart();});
+  $('endUnit').addEventListener('change', () => {state.settings.endUnit=$('endUnit').value;save();updateStart();});
   document.querySelectorAll('input[name="importance"]').forEach(input => input.addEventListener('change', () => {state.settings.importance=threshold();save();updateStart();}));
   $('startAll').addEventListener('click', () => begin(false));
   $('startReview').addEventListener('click', () => begin(true));
