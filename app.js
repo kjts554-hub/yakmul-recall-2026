@@ -2,32 +2,41 @@
   'use strict';
   const BANK = (window.QUESTION_BANK || []).filter(q => q.review_status === 'editor_reviewed');
   const BY_ID = new Map(BANK.map(q => [q.id, q]));
+  const UNITS = [...new Map(BANK.map(q => [q.unit_id, {id:q.unit_id,label:q.unit_label,year:q.year}])).values()].sort((a,b) => Number(a.id.slice(5).split('-')[0])-Number(b.id.slice(5).split('-')[0]));
+  const UNIT_IDS = UNITS.map(u => u.id);
   const KEY = 'drug-memory-full-v1';
   const $ = id => document.getElementById(id);
   const today = () => new Intl.DateTimeFormat('en-CA', {timeZone:'Asia/Seoul',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());
-  const fresh = () => ({schema_version:1, settings:{unit:'all', endUnit:'all', importance:3}, records:{}, session:null});
+  const fresh = () => ({schema_version:1, settings:{units:[...UNIT_IDS], importance:3}, records:{}, session:null});
   let state = (() => {
     try {
       const value = JSON.parse(localStorage.getItem(KEY) || 'null');
       if (!validState(value)) return fresh();
-      if (!sessionMatchesBank(value.session)) value.session = null;
-      if (!unitExists(value.settings.unit)) value.settings.unit = 'all';
-      if (!unitExists(value.settings.endUnit)) value.settings.endUnit = value.settings.unit;
+      migrateSettings(value);
+      value.session = null;
       return value;
     } catch { return fresh(); }
   })();
 
-  function sessionMatchesBank(s) {
-    return !s || s.ids.every((id,i) => BY_ID.get(id)?.version === s.versions[i]);
-  }
-  function unitExists(unit) {
-    return ['all','year:2025','year:2026', ...BANK.map(q => q.unit_id)].includes(unit);
-  }
   const unitNumber = id => Number(id.slice(5).split('-')[0]);
+  function migrateSettings(value) {
+    const settings = value.settings;
+    if (Array.isArray(settings.units)) {
+      settings.units = [...new Set(settings.units.filter(id => UNIT_IDS.includes(id)))];
+      return;
+    }
+    const start = settings.unit || 'all', end = UNIT_IDS.includes(settings.endUnit) ? settings.endUnit : start;
+    if (start === 'all') settings.units = [...UNIT_IDS];
+    else if (start.startsWith('year:')) settings.units = UNITS.filter(u => u.year === Number(start.slice(5))).map(u => u.id);
+    else if (UNIT_IDS.includes(start)) settings.units = UNITS.filter(u => unitNumber(u.id) >= unitNumber(start) && unitNumber(u.id) <= unitNumber(end)).map(u => u.id);
+    else settings.units = [...UNIT_IDS];
+    delete settings.unit; delete settings.endUnit;
+  }
 
   function validState(value) {
     if (!value || value.schema_version !== 1 || !value.settings || !value.records || typeof value.records !== 'object' || Array.isArray(value.records)) return false;
-    if (typeof value.settings.unit !== 'string' || value.settings.unit.length > 500) return false;
+    if (value.settings.units !== undefined && (!Array.isArray(value.settings.units) || value.settings.units.length > UNIT_IDS.length || value.settings.units.some(id => typeof id !== 'string'))) return false;
+    if (value.settings.units === undefined && (typeof value.settings.unit !== 'string' || value.settings.unit.length > 500)) return false;
     if (![1,2,3].includes(value.settings.importance)) return false;
     for (const [id, rec] of Object.entries(value.records)) {
       if (!/^drug-[a-z0-9_-]+$/.test(id) || !rec || !/^[a-f0-9]{12}$/.test(rec.version) || !['review','remembered'].includes(rec.status)) return false;
@@ -38,7 +47,7 @@
     }
     const s = value.session;
     if (s === null) return true;
-    if (!s || !Array.isArray(s.ids) || !s.ids.length || s.ids.length > 10 || new Set(s.ids).size !== s.ids.length || s.ids.some(id => typeof id !== 'string' || !/^drug-[a-z0-9_-]+$/.test(id))) return false;
+    if (!s || !Array.isArray(s.ids) || !s.ids.length || s.ids.length > BANK.length || new Set(s.ids).size !== s.ids.length || s.ids.some(id => typeof id !== 'string' || !/^drug-[a-z0-9_-]+$/.test(id))) return false;
     if (!Array.isArray(s.versions) || s.versions.length !== s.ids.length || s.versions.some(v => typeof v !== 'string' || !/^[a-f0-9]{12}$/.test(v))) return false;
     if (!Number.isInteger(s.index) || s.index < 0 || s.index > s.ids.length || !['draft','feedback','result'].includes(s.stage)) return false;
     if ((s.stage === 'result') !== (s.index === s.ids.length)) return false;
@@ -57,54 +66,55 @@
   }
   function threshold() { return Number(document.querySelector('input[name="importance"]:checked').value); }
   function inScope() {
-    const unit = $('unit').value;
-    const end = $('endUnit').value;
-    return BANK.filter(q => q.importance >= threshold() && (
-      unit === 'all' || (unit.startsWith('year:') ? q.year === Number(unit.slice(5)) :
-        unitNumber(q.unit_id) >= unitNumber(unit) && unitNumber(q.unit_id) <= unitNumber(end))
-    ));
+    const selected = new Set(state.settings.units);
+    return BANK.filter(q => q.importance >= threshold() && selected.has(q.unit_id));
   }
   function show(name) {
     ['start','quiz','result'].forEach(id => $(id).hidden = id !== name);
     if (name === 'start') updateStart();
     window.scrollTo(0,0);
   }
-  function makeOption(value, label) {
-    const option = document.createElement('option');
-    option.value = value;
-    option.textContent = label;
-    return option;
+  let draftUnits = new Set();
+  function scopeText() {
+    const selected = UNITS.filter(u => state.settings.units.includes(u.id));
+    if (selected.length === UNITS.length) return `전체 ${UNITS.length}개 단원`;
+    if (!selected.length) return '선택한 단원 없음';
+    if (selected.length <= 2) return selected.map(u => u.label).join(', ');
+    return `${selected[0].label} 외 ${selected.length-1}개 단원`;
   }
-  function populateUnits() {
-    const select = $('unit');
-    select.append(makeOption('all', `전체 강좌 · ${BANK.length}문제`));
-    const units = [...new Map(BANK.map(q => [q.unit_id, {id:q.unit_id,label:q.unit_label,year:q.year}])).values()];
-    units.sort((a,b) => unitNumber(a.id)-unitNumber(b.id));
-    $('endUnit').append(makeOption('', '범위를 지정할 때 선택'));
-    for (const unit of units) $('endUnit').append(makeOption(unit.id, unit.label));
+  function updateModalSummary() {
+    const count = BANK.filter(q => q.importance >= threshold() && draftUnits.has(q.unit_id)).length;
+    $('modalSummary').textContent = `${draftUnits.size}개 단원 · ${count}개 약물`;
+    $('applyScope').disabled = !draftUnits.size;
+  }
+  function renderScopeGroups() {
+    const container = $('scopeGroups'); container.replaceChildren();
     for (const year of [2026,2025]) {
-      const group = document.createElement('optgroup');
-      group.label = year === 2025 ? '2025 참고' : '2026 강의록·필기';
-      group.append(makeOption(`year:${year}`, `${year === 2025 ? '2025 참고' : '2026 자료'} 전체`));
-      for (const unit of units.filter(u => u.year === year).sort((a,b) => a.label.localeCompare(b.label, 'ko', {numeric:true}))) {
-        const count = BANK.filter(q => q.unit_id === unit.id).length;
-        group.append(makeOption(unit.id, `${unit.label} · ${count}문제`));
+      const units = UNITS.filter(u => u.year === year);
+      if (!units.length) continue;
+      const details = document.createElement('details'); details.className = 'scope-group'; details.open = true;
+      const summary = document.createElement('summary'); summary.textContent = `${year === 2025 ? '2025 참고' : '2026 강의록·필기'} · ${units.length}개 단원`;
+      const controls = document.createElement('div'); controls.className = 'group-controls';
+      for (const [label, checked] of [['전체 선택',true],['선택 해제',false]]) {
+        const button = document.createElement('button'); button.type = 'button'; button.textContent = label;
+        button.addEventListener('click', () => {for (const unit of units) checked ? draftUnits.add(unit.id) : draftUnits.delete(unit.id); renderScopeGroups();});
+        controls.append(button);
       }
-      select.append(group);
+      details.append(summary,controls);
+      for (const unit of units) {
+        const row = document.createElement('label'); row.className = 'scope-row';
+        const input = document.createElement('input'); input.type = 'checkbox'; input.checked = draftUnits.has(unit.id);
+        input.addEventListener('change', () => {input.checked ? draftUnits.add(unit.id) : draftUnits.delete(unit.id); updateModalSummary();});
+        const name = document.createElement('span'); name.textContent = unit.label;
+        const count = document.createElement('small'); count.textContent = `${BANK.filter(q => q.unit_id === unit.id && q.importance >= threshold()).length}개`;
+        row.append(input,name,count); details.append(row);
+      }
+      container.append(details);
     }
-    select.value = state.settings.unit;
-    updateEndUnits();
-    document.querySelector(`input[name="importance"][value="${state.settings.importance}"]`).checked = true;
+    updateModalSummary();
   }
-  function updateEndUnits() {
-    const start = $('unit').value;
-    const end = $('endUnit');
-    end.disabled = !start.startsWith('unit:');
-    for (const option of end.options) option.disabled = !end.disabled && (!option.value || unitNumber(option.value) < unitNumber(start));
-    if (end.disabled) { end.value = ''; return; }
-    if (!state.settings.endUnit?.startsWith('unit:') || !unitExists(state.settings.endUnit) || unitNumber(state.settings.endUnit) < unitNumber(start)) state.settings.endUnit = start;
-    end.value = state.settings.endUnit;
-  }
+  function openScope() {draftUnits = new Set(state.settings.units); renderScopeGroups(); $('scopeDialog').showModal();}
+  function closeScope() {$('scopeDialog').close();}
   function updateStart() {
     const pool = inScope();
     const reviewed = pool.filter(q => record(q)?.status === 'review');
@@ -113,7 +123,8 @@
     $('reviewCount').textContent = reviewed.length;
     $('startAll').disabled = !pool.length;
     $('startReview').disabled = !reviewed.length;
-    $('startAll').textContent = `${Math.min(10,pool.length)}문제 시작`;
+    $('scopeSummary').textContent = scopeText();
+    $('startAll').textContent = `${pool.length}개 약물 시작`;
     $('startReview').textContent = `다시 볼 약물만 (${reviewed.length})`;
   }
   function shuffle(list) {
@@ -125,7 +136,7 @@
     return copy;
   }
   function beginIds(ids) {
-    const chosen = shuffle(ids).slice(0,10);
+    const chosen = shuffle(ids);
     if (!chosen.length) return;
     state.session = {ids:chosen, versions:chosen.map(id => BY_ID.get(id).version), index:0, stage:'draft', draft:'', unknown:false, checked:[], results:[]};
     save();
@@ -146,7 +157,7 @@
     show('quiz');
     $('progress').textContent = `${s.index+1} / ${s.ids.length} · 중요도 ${q.importance}점`;
     $('barFill').style.width = `${(s.index + (s.stage === 'feedback' ? 1 : 0))/s.ids.length*100}%`;
-    $('questionYear').textContent = q.year === 2025 ? '· 2025 참고' : '';
+    $('questionUnit').textContent = `${q.unit_label} · ${q.year === 2025 ? '2025 참고' : '2026 자료'}`;
     $('prompt').textContent = q.drug;
     $('answer').value = s.draft;
     $('answer').disabled = s.stage === 'feedback';
@@ -241,24 +252,23 @@
       if (data.format !== 'drug-memory-backup' || data.schema_version !== 1 || !validState(data.state)) throw new Error('지원하지 않거나 손상된 백업 파일입니다.');
       exportBackup('drug-memory-before-restore');
       state = data.state;
-      if (!sessionMatchesBank(state.session)) state.session = null;
-      if (!unitExists(state.settings.unit)) state.settings.unit = 'all';
+      migrateSettings(state);
+      state.session = null;
       save();
-      $('unit').value = state.settings.unit;
-      updateEndUnits();
       document.querySelector(`input[name="importance"][value="${state.settings.importance}"]`).checked = true;
       $('backupNotice').textContent = '기존 기록을 백업한 뒤 가져온 기록으로 복원했습니다.';
-      if (state.session?.stage === 'result') renderResult();
-      else if (state.session) renderQuestion();
-      else show('start');
+      show('start');
     } catch (error) { $('backupNotice').textContent = `복원하지 못했습니다: ${error.message}`; }
     finally { $('import').value = ''; }
   }
 
-  populateUnits();
+  document.querySelector(`input[name="importance"][value="${state.settings.importance}"]`).checked = true;
+  save();
   $('classificationCount').textContent = window.QUESTION_BANK_META?.classification_only ?? '–';
-  $('unit').addEventListener('change', () => {state.settings.unit=$('unit').value;state.settings.endUnit=state.settings.unit;updateEndUnits();save();updateStart();});
-  $('endUnit').addEventListener('change', () => {state.settings.endUnit=$('endUnit').value;save();updateStart();});
+  $('openScope').addEventListener('click', openScope);
+  $('closeScope').addEventListener('click', closeScope);
+  $('cancelScope').addEventListener('click', closeScope);
+  $('applyScope').addEventListener('click', () => {state.settings.units = UNITS.filter(u => draftUnits.has(u.id)).map(u => u.id); save(); closeScope(); updateStart();});
   document.querySelectorAll('input[name="importance"]').forEach(input => input.addEventListener('change', () => {state.settings.importance=threshold();save();updateStart();}));
   $('startAll').addEventListener('click', () => begin(false));
   $('startReview').addEventListener('click', () => begin(true));
