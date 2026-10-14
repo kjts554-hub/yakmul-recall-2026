@@ -2,7 +2,8 @@
   'use strict';
   const BANK = (window.QUESTION_BANK || []).filter(q => q.review_status === 'editor_reviewed');
   const BY_ID = new Map(BANK.map(q => [q.id, q]));
-  const UNITS = [...new Map(BANK.map(q => [q.unit_id, {id:q.unit_id,label:q.unit_label,year:q.year}])).values()].sort((a,b) => Number(a.id.slice(5).split('-')[0])-Number(b.id.slice(5).split('-')[0]));
+  const UNITS = (window.QUESTION_BANK_META?.units || [...new Map(BANK.map(q => [q.unit_id, {id:q.unit_id,label:q.unit_label,year:q.year}])).values()]).sort((a,b) => Number(a.id.slice(5).split('-')[0])-Number(b.id.slice(5).split('-')[0]));
+  const UNIT_BY_ID = new Map(UNITS.map(unit => [unit.id, unit]));
   const UNIT_IDS = UNITS.map(u => u.id);
   const KEY = 'drug-memory-full-v1';
   const $ = id => document.getElementById(id);
@@ -157,7 +158,7 @@
     show('quiz');
     $('progress').textContent = `${s.index+1} / ${s.ids.length} · 중요도 ${q.importance}점`;
     $('barFill').style.width = `${(s.index + (s.stage === 'feedback' ? 1 : 0))/s.ids.length*100}%`;
-    $('questionUnit').textContent = `${q.unit_label} · ${q.year === 2025 ? '2025 참고' : '2026 자료'}`;
+    $('questionUnit').textContent = `${UNIT_BY_ID.get(q.unit_id)?.label || q.unit_label} · ${q.year === 2025 ? '2025 참고' : '2026 자료'}`;
     $('prompt').textContent = q.drug;
     $('answer').value = s.draft;
     $('answer').disabled = s.stage === 'feedback';
