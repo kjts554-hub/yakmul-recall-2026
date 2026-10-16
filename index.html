@@ -4,63 +4,82 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>약물의 이해 · 회상 연습</title>
-  <meta name="description" content="약물의 이해 강좌 전체에서 검수된 약물의 핵심 특징을 직접 회상하고 복습하는 학습 사이트">
-  <link rel="stylesheet" href="style.css?v=20261011-scope-modal">
-  <script defer src="questions.js?v=20261014-unit-catalog"></script>
-  <script defer src="review_policy.js"></script>
-  <script defer src="app.js?v=20261014-unit-catalog"></script>
+  <meta name="description" content="약물의 이해 전체 강좌에서 검토한 약물의 항목별 회상과 영어 이름 맞히기">
+  <link rel="stylesheet" href="style.css?v=20261016-full-v2">
+  <script defer src="data.js?v=20261016-full-v2"></script>
+  <script defer src="core.js?v=20261016-full-v2"></script>
+  <script defer src="progress.js?v=20261016-full-v2"></script>
+  <script defer src="app.js?v=20261016-full-v2"></script>
 </head>
 <body>
   <main class="shell">
-    <header class="top"><span class="brand">약물의 이해 <small>회상 연습</small></span><span class="prototype">전체 강좌</span></header>
-    <section id="start" class="panel">
-      <p class="eyebrow">01 · 범위 선택</p>
-      <h1>기억나는 만큼 먼저 답해보세요.</h1>
-      <p class="lead">약물의 특징을 직접 적고, 검수한 핵심 요소와 대조해 스스로 확인합니다.</p>
-      <div class="scope-card"><div><span class="scope-label">선택한 단원</span><strong id="scopeSummary">전체 단원</strong></div><button id="openScope" class="secondary" type="button">범위 변경</button></div>
-      <fieldset class="field"><legend>중요도</legend><div class="segmented">
-        <label><input type="radio" name="importance" value="3" checked><span>3점만</span></label>
-        <label><input type="radio" name="importance" value="2"><span>2점 이상</span></label>
-        <label><input type="radio" name="importance" value="1"><span>전체</span></label>
-      </div></fieldset>
-      <div class="stats" aria-live="polite"><div><strong id="available">–</strong><span>출제 가능한 약물</span></div><div><strong id="done">–</strong><span>풀어본 약물</span></div><div><strong id="reviewCount">–</strong><span>다시 볼 약물</span></div></div>
-      <div class="actions"><button id="startAll" class="primary">문제 시작</button><button id="startReview" class="secondary">다시 볼 약물만</button></div>
-      <p class="fine">선택한 단원의 약물을 모두 한 번씩 무작위로 출제합니다. 학습 답을 확정하기 어려운 <span id="classificationCount">–</span>개는 출제에서 제외했습니다. 중요도는 출제 범위를 정하며 출제 순서는 바꾸지 않습니다.</p>
-      <div class="backup"><h2>학습 기록</h2><p class="fine">기록은 이 브라우저에 저장됩니다. 브라우저 데이터를 지우거나 기기를 바꾸기 전 백업하세요.</p><div class="actions"><button id="export" class="secondary">기록 백업</button><label class="file-button secondary" for="import">백업 가져오기</label><input id="import" class="visually-hidden" type="file" accept="application/json,.json"></div><p id="backupNotice" class="fine" role="status" aria-live="polite"></p></div>
-      <p id="storageNotice" class="fine" hidden>이 브라우저에서 기록을 저장할 수 없습니다. 백업 파일을 내려받아 보관하세요.</p>
+    <header class="top"><span class="brand">약물의 이해 <span>회상 연습</span></span><span class="pilot-badge">전체 강좌</span></header>
+
+    <section id="startScreen" class="panel" aria-labelledby="startTitle">
+      <p class="eyebrow">꺼내 보고, 확인하고, 기억하기</p>
+      <h1 id="startTitle" tabindex="-1">항목별로 떠올리고,<br>빈칸을 채워보세요.</h1>
+      <p class="lead" id="modeDescription">약물 이름을 보고 표적·기전·용도를 각각 적어봅니다.</p>
+      <fieldset class="mode-picker">
+        <legend>문제 방식</legend>
+        <div class="mode-options">
+          <label class="mode-option"><input type="radio" name="mode" value="fields" checked><span><strong>항목별 회상</strong><small>약물명 → 표적·기전·용도</small></span></label>
+          <label class="mode-option"><input type="radio" name="mode" value="name"><span><strong>이름 맞히기</strong><small>특징 → 영어 약물명</small></span></label>
+        </div>
+      </fieldset>
+      <div class="scope-card"><div><span class="small-label">선택한 범위</span><strong id="scopeLabel"></strong><p id="scopeMeta"></p></div><button id="openScope" class="secondary" type="button">범위 변경</button></div>
+      <div class="start-count" aria-live="polite"><strong id="availableCount">0</strong><span>개 약물을 모두 연습합니다.</span></div>
+      <p id="availabilityNote" class="helper"></p>
+      <p id="learningProgress" class="learning-progress" aria-live="polite"></p>
+      <button id="begin" class="primary wide" type="button">연습 시작</button>
+      <button id="beginReview" class="secondary wide review-button" type="button" disabled>다시 볼 약물만 연습</button>
+      <p class="fine">선택한 범위의 약물을 중복 없이 무작위로 출제합니다.<br>확인하고 넘긴 문제의 결과는 이 브라우저에 저장됩니다.</p>
+      <details class="backup"><summary>학습 기록 백업·복원</summary><p class="helper">기기를 바꾸거나 브라우저 데이터를 지우기 전에 기록을 백업하세요.</p><p id="legacyNotice" class="fine" hidden></p><div class="actions"><button id="exportBackup" class="secondary" type="button">기록 백업</button><label class="secondary file-button" for="importBackup">백업 가져오기</label><input id="importBackup" class="visually-hidden" type="file" accept="application/json,.json"></div><p id="backupNotice" class="fine" role="status"></p></details>
+      <p id="storageNotice" class="error" role="status" hidden>이 브라우저에서 기록을 저장할 수 없습니다. 화면을 닫기 전에 기록을 백업해주세요.</p>
     </section>
-    <section id="quiz" class="panel" hidden>
-      <div class="question-head"><span id="progress" class="eyebrow"></span><button id="quit" class="text-button">범위 선택</button></div>
-      <div class="bar" aria-hidden="true"><span id="barFill"></span></div>
-      <p id="questionUnit" class="question-unit"></p>
-      <p class="eyebrow">약물 → 핵심 특징</p>
-      <h1 id="prompt"></h1>
-      <p class="prompt-help">기전, 용도, 구별점 중 기억나는 내용을 적어보세요.</p>
-      <label class="answer-label" for="answer">내 답</label>
-      <textarea id="answer" rows="5" placeholder="기억나는 내용을 직접 적으세요"></textarea>
-      <div id="beforeActions" class="actions"><button id="reveal" class="primary">답 확인</button><button id="unknown" class="secondary">모르겠어요</button></div>
-      <div id="feedback" hidden>
-        <div class="my-answer"><span class="eyebrow">내가 적은 답</span><p id="savedAnswer"></p></div>
-        <div class="model-answer"><span class="eyebrow">핵심 특징</span><p id="modelAnswer"></p><small id="source"></small></div>
-        <fieldset id="elements" class="elements"><legend>내 답에 포함된 핵심 요소를 체크하세요</legend><div id="elementList"></div></fieldset>
-        <p class="fine">일부만 맞았거나 헷갈렸다면 해당 요소를 체크하지 마세요. 빠진 요소가 다시 볼 목록에 남습니다.</p>
-        <div class="actions"><button id="next" class="primary">확인하고 다음</button></div>
-      </div>
+
+    <section id="questionScreen" class="panel" aria-labelledby="questionTitle" hidden>
+      <div class="question-top"><span id="progressText" class="eyebrow"></span><button id="goHome" class="text-button" type="button">처음으로</button></div>
+      <div id="progressBar" class="progress" role="progressbar" aria-label="학습 진행" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span id="progressFill"></span></div>
+      <p id="questionUnit" class="unit-chip"></p>
+      <p id="questionMode" class="eyebrow"></p>
+      <h1 id="questionTitle" tabindex="-1"></h1>
+      <p id="questionHelp" class="helper"></p>
+      <p id="nameClue" class="name-clue" hidden></p>
+      <div id="feedbackMessage" class="feedback-message" role="status" tabindex="-1" hidden></div>
+      <form id="answerForm" novalidate>
+        <div id="fieldInputs" class="answer-fields"></div>
+        <div id="nameAnswer" class="name-answer" hidden><label for="drugName">영어 약물명</label><input id="drugName" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" maxlength="300" placeholder="약물 이름을 적어보세요"></div>
+        <p id="answerError" class="error" role="alert" hidden></p>
+        <div id="beforeActions" class="actions"><button id="reveal" class="primary" type="submit">답 확인</button><button id="unknown" class="secondary" type="button">모르겠어요</button></div>
+      </form>
+      <div id="nameFeedback" class="name-feedback" hidden></div>
+      <details id="correctionInfo" class="source-note" hidden><summary>원문 정정 사항</summary><p id="correctionText"></p></details>
+      <div id="afterActions" hidden><p id="assessmentHelp" class="fine"></p><button id="next" class="primary wide" type="button">확인하고 다음</button></div>
     </section>
-    <section id="result" class="panel" hidden>
-      <p class="eyebrow">03 · 학습 결과</p><h1>이번 연습을 마쳤어요.</h1>
-      <div class="stats"><div><strong id="resultTotal">–</strong><span>확인한 약물</span></div><div><strong id="resultRemembered">–</strong><span>모든 요소 확인</span></div><div><strong id="resultMissed">–</strong><span>빠진 요소 있음</span></div></div>
-      <h2>다시 볼 내용</h2><ul id="missedList" class="review-list"></ul>
-      <div class="actions"><button id="retry" class="primary">빠진 문제 다시 풀기</button><button id="again" class="secondary">범위 다시 선택</button></div>
-      <p class="fine">이 결과는 직접 체크한 내용입니다. 오늘 다시 맞혀도 복습 목록에서는 다음 날 이후에 해제됩니다.</p>
+
+    <section id="resultScreen" class="panel" aria-labelledby="resultTitle" hidden>
+      <p class="eyebrow">이번 연습 결과</p><h1 id="resultTitle" tabindex="-1">어떤 내용이 남았는지<br>확인해보세요.</h1>
+      <p id="resultScope" class="helper"></p>
+      <div class="result-stats"><div><strong id="resultTotal">0</strong><span>확인한 약물</span></div><div><strong id="resultCorrect">0</strong><span id="correctLabel">모두 기억</span></div><div><strong id="resultMissed">0</strong><span>다시 볼 약물</span></div></div>
+      <section id="fieldSummary" aria-labelledby="fieldSummaryTitle"><h2 id="fieldSummaryTitle">보강할 항목</h2><div id="fieldGaps" class="field-gaps"></div></section>
+      <h2>다시 볼 내용</h2><div id="missedList" class="missed-list"></div>
+      <div class="actions"><button id="retryMissed" class="primary" type="button">다시 볼 약물 연습</button><button id="retryAll" class="secondary" type="button">이번 범위 다시 풀기</button></div>
+      <button id="resultHome" class="text-button result-home" type="button">처음으로</button>
+      <p id="resultNote" class="fine"></p>
     </section>
-    <footer>2026 강의록 우선 · 2025 참고 내용 연도 표시 · 실습/PBL/CBL 제외</footer>
+    <footer>2026 자료 우선 · 2025 참고 연도 표시 · 실습/PBL/CBL 제외</footer>
+    <noscript><p class="error">회상 연습을 이용하려면 브라우저의 JavaScript를 켜주세요.</p></noscript>
   </main>
-  <dialog id="scopeDialog" aria-labelledby="scopeTitle"><div class="dialog-shell">
-    <div class="dialog-head"><div><p class="eyebrow">출제 범위</p><h2 id="scopeTitle">단원 선택</h2></div><button id="closeScope" class="icon-button" type="button" aria-label="닫기">×</button></div>
-    <p class="dialog-intro">원하는 단원을 체크하세요. 선택한 단원의 약물이 모두 출제됩니다.</p>
-    <div id="scopeGroups" class="scope-groups"></div>
-    <div class="dialog-footer"><span id="modalSummary" aria-live="polite"></span><div class="dialog-actions"><button id="cancelScope" class="secondary" type="button">취소</button><button id="applyScope" class="primary" type="button">범위 적용</button></div></div>
-  </div></dialog>
+
+  <dialog id="scopeDialog" aria-labelledby="scopeTitle" aria-describedby="scopeIntro">
+    <div class="dialog-shell">
+      <div class="dialog-head"><div><p class="eyebrow">출제 범위</p><h2 id="scopeTitle">원하는 범위를 고르세요.</h2></div><button id="closeScope" class="icon-button" type="button" aria-label="범위 선택 닫기">×</button></div>
+      <p id="scopeIntro" class="helper">원하는 단원을 체크하세요. 선택한 범위의 약물을 모두 출제합니다.</p>
+      <fieldset class="importance-picker"><legend>중요도</legend><div class="segments"><label><input type="radio" name="importance" value="3" checked><span>3점만</span></label><label><input type="radio" name="importance" value="2"><span>2점 이상</span></label><label><input type="radio" name="importance" value="1"><span>전체</span></label></div></fieldset>
+      <section class="unit-picker" aria-labelledby="unitPickerTitle"><h3 id="unitPickerTitle">단원</h3><div class="unit-controls"><button id="selectAllUnits" class="text-button" type="button">전체 선택</button><button id="clearUnits" class="text-button" type="button">선택 해제</button><span id="selectedUnitCount"></span></div><div id="unitList" class="unit-list"></div></section>
+      <p id="modalCount" class="helper" aria-live="polite"></p>
+      <div class="dialog-actions"><button id="cancelScope" class="secondary" type="button">취소</button><button id="applyScope" class="primary" type="button">범위 적용</button></div>
+    </div>
+  </dialog>
 </body>
 </html>

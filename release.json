@@ -1,0 +1,29 @@
+{
+  "version": "2026-10-16-full-v2",
+  "unitCount": 31,
+  "lectureRange": [
+    1,
+    36
+  ],
+  "questionCounts": {
+    "fields": {
+      "3": 422,
+      "2_plus": 747,
+      "all": 896
+    },
+    "name": {
+      "3": 209,
+      "2_plus": 342,
+      "all": 378
+    }
+  },
+  "sourceBankSha256": "56a63a36de4c0b8517b253cfa6706949e2fdbae91cb72c57252c7f0af7efd1f1",
+  "assetSha256": {
+    "index.html": "7ca4350bc03acd29742653269a38b1019baa7e901c9a5feb5395dd6c74e9eeeb",
+    "style.css": "f9a4c51b70208e4148d4728ac9bbb34261896cac911756aff6b8b294c52eea1e",
+    "app.js": "840adcd231b7861dc90b273e1ae66949b70f440d42fd663ba3baa1d13639783b",
+    "core.js": "47aff28b7985cc41606535e499025ae0ef7d409b61b079825bf7709f28b1e194",
+    "progress.js": "55932a19d2d203e63a257931a42f88880b8ba3e866bc8eace502bf1f8db5cc4b",
+    "data.js": "6190dd23b66eaa0180ba0546e1214116402bfb36c5fad712d85d7ac7900ba9e5"
+  }
+}
