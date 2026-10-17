@@ -69,7 +69,7 @@ globalThis.RECALL_APP_DATA = {
       "id": "unit:13",
       "label": "13. 아드레날린성 약리학 2",
       "year": 2026,
-      "fieldsCount": 29,
+      "fieldsCount": 28,
       "nameCount": 7
     },
     {
@@ -146,7 +146,7 @@ globalThis.RECALL_APP_DATA = {
       "id": "unit:26",
       "label": "26. 기타항생제",
       "year": 2026,
-      "fieldsCount": 16,
+      "fieldsCount": 17,
       "nameCount": 8
     },
     {
@@ -4971,7 +4971,7 @@ globalThis.RECALL_APP_DATA = {
       "name": "Bisoprolol",
       "unitId": "unit:13",
       "unitLabel": "13. 아드레날린성 약리학 2",
-      "importance": 3,
+      "importance": 2,
       "version": "9bff0fe6410a",
       "fields": [
         {
@@ -4996,7 +4996,7 @@ globalThis.RECALL_APP_DATA = {
       "name": "Carteolol",
       "unitId": "unit:13",
       "unitLabel": "13. 아드레날린성 약리학 2",
-      "importance": 2,
+      "importance": 3,
       "version": "0eec889807cd",
       "fields": [
         {
@@ -5064,8 +5064,8 @@ globalThis.RECALL_APP_DATA = {
     {
       "id": "clarithromycin",
       "name": "Clarithromycin",
-      "unitId": "unit:13",
-      "unitLabel": "13. 아드레날린성 약리학 2",
+      "unitId": "unit:26",
+      "unitLabel": "26. 기타항생제",
       "importance": 3,
       "version": "9b3421458294",
       "fields": [
@@ -5126,7 +5126,7 @@ globalThis.RECALL_APP_DATA = {
       "name": "Esmolol",
       "unitId": "unit:13",
       "unitLabel": "13. 아드레날린성 약리학 2",
-      "importance": 3,
+      "importance": 2,
       "version": "b75f3973ac49",
       "fields": [
         {
@@ -5182,7 +5182,7 @@ globalThis.RECALL_APP_DATA = {
       "name": "Labetalol",
       "unitId": "unit:13",
       "unitLabel": "13. 아드레날린성 약리학 2",
-      "importance": 3,
+      "importance": 2,
       "version": "aaf93d19bb84",
       "fields": [
         {
@@ -5262,7 +5262,7 @@ globalThis.RECALL_APP_DATA = {
       "name": "Nadolol",
       "unitId": "unit:13",
       "unitLabel": "13. 아드레날린성 약리학 2",
-      "importance": 3,
+      "importance": 2,
       "version": "19b785f8010b",
       "fields": [
         {
@@ -5347,7 +5347,7 @@ globalThis.RECALL_APP_DATA = {
       "name": "Penbutolol",
       "unitId": "unit:13",
       "unitLabel": "13. 아드레날린성 약리학 2",
-      "importance": 1,
+      "importance": 2,
       "version": "19b785f8010b",
       "fields": [
         {
@@ -5452,7 +5452,7 @@ globalThis.RECALL_APP_DATA = {
       "name": "Pindolol",
       "unitId": "unit:13",
       "unitLabel": "13. 아드레날린성 약리학 2",
-      "importance": 3,
+      "importance": 2,
       "version": "19b785f8010b",
       "fields": [
         {
@@ -5572,7 +5572,7 @@ globalThis.RECALL_APP_DATA = {
       "name": "Sotalol",
       "unitId": "unit:13",
       "unitLabel": "13. 아드레날린성 약리학 2",
-      "importance": 3,
+      "importance": 2,
       "version": "6b9fd470af91",
       "fields": [
         {
