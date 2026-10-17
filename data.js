@@ -111,8 +111,8 @@ globalThis.RECALL_APP_DATA = {
       "id": "unit:21",
       "label": "21. 히스타민 약리",
       "year": 2026,
-      "fieldsCount": 54,
-      "nameCount": 27
+      "fieldsCount": 52,
+      "nameCount": 26
     },
     {
       "id": "unit:22",
@@ -125,8 +125,8 @@ globalThis.RECALL_APP_DATA = {
       "id": "unit:23",
       "label": "23. 항생제 치료의 기본 원리",
       "year": 2026,
-      "fieldsCount": 5,
-      "nameCount": 2
+      "fieldsCount": 6,
+      "nameCount": 3
     },
     {
       "id": "unit:24",
@@ -146,7 +146,7 @@ globalThis.RECALL_APP_DATA = {
       "id": "unit:26",
       "label": "26. 기타항생제",
       "year": 2026,
-      "fieldsCount": 17,
+      "fieldsCount": 18,
       "nameCount": 8
     },
     {
@@ -10112,7 +10112,7 @@ globalThis.RECALL_APP_DATA = {
       "unitId": "unit:21",
       "unitLabel": "21. 히스타민 약리",
       "importance": 3,
-      "version": "f6ec0f10d375",
+      "version": "9684436b69ae",
       "fields": [
         {
           "id": "target",
@@ -10128,11 +10128,6 @@ globalThis.RECALL_APP_DATA = {
           "id": "indication",
           "label": "용도",
           "answer": "알레르기 증상에 사용한다."
-        },
-        {
-          "id": "caution",
-          "label": "주의 사항",
-          "answer": "1세대보다 뇌 이행이 적지만 일부에서는 졸림이 나타날 수 있다."
         }
       ],
       "reverse": null,
@@ -10339,7 +10334,7 @@ globalThis.RECALL_APP_DATA = {
       "unitId": "unit:21",
       "unitLabel": "21. 히스타민 약리",
       "importance": 2,
-      "version": "37f98fb104bb",
+      "version": "97da6d346849",
       "fields": [
         {
           "id": "target",
@@ -10355,15 +10350,10 @@ globalThis.RECALL_APP_DATA = {
           "id": "other",
           "label": "대사체 관계",
           "answer": "Loratadine의 활성 대사체다."
-        },
-        {
-          "id": "caution",
-          "label": "주의 사항",
-          "answer": "뇌로의 이행이 적어 1세대 약물보다 진정과 항콜린 작용이 적다."
         }
       ],
       "reverse": {
-        "prompt": "표적: H1 수용체. 작용 기전: 2세대 역작용제다. 대사체 관계: Loratadine의 활성 대사체다. 주의 사항: 뇌로의 이행이 적어 1세대 약물보다 진정과 항콜린 작용이 적다. 이 약물의 이름은?",
+        "prompt": "표적: H1 수용체 작용 기전: 2세대 역작용제다. 대사체 관계: Loratadine의 활성 대사체다. 이 약물의 이름은?",
         "acceptedAnswers": [
           "Desloratadine",
           "Clarinex",
@@ -10536,8 +10526,8 @@ globalThis.RECALL_APP_DATA = {
       "name": "Dupilumab",
       "unitId": "unit:21",
       "unitLabel": "21. 히스타민 약리",
-      "importance": 3,
-      "version": "20b94f0087b7",
+      "importance": 1,
+      "version": "db2458385dc0",
       "fields": [
         {
           "id": "target",
@@ -10547,16 +10537,16 @@ globalThis.RECALL_APP_DATA = {
         {
           "id": "mechanism",
           "label": "작용 기전",
-          "answer": "차단하여 IL-4·IL-13 신호를 억제하는 단클론항체다."
+          "answer": "수용체를 차단하는 단클론항체다."
         },
         {
           "id": "indication",
           "label": "용도",
-          "answer": "아토피피부염·천식·만성 비부비동염의 비용종 등 Type 2 염증 질환에 사용하며 만성 두드러기에도 사용한다."
+          "answer": "H1 항히스타민제에 반응하지 않는 만성 두드러기의 치료 선택지다."
         }
       ],
       "reverse": {
-        "prompt": "표적: IL-4Rα. 작용 기전: 차단하여 IL-4·IL-13 신호를 억제하는 단클론항체다. 용도: 아토피피부염·천식·만성 비부비동염의 비용종 등 Type 2 염증 질환에 사용하며 만성 두드러기에도 사용한다. 이 약물의 이름은?",
+        "prompt": "표적: IL-4Rα 작용 기전: 수용체를 차단하는 단클론항체다. 용도: H1 항히스타민제에 반응하지 않는 만성 두드러기의 치료 선택지다. 이 약물의 이름은?",
         "acceptedAnswers": [
           "Dupilumab"
         ]
@@ -10667,7 +10657,7 @@ globalThis.RECALL_APP_DATA = {
       "unitId": "unit:21",
       "unitLabel": "21. 히스타민 약리",
       "importance": 3,
-      "version": "be0cecf8b8fe",
+      "version": "235b151b2cd0",
       "fields": [
         {
           "id": "target",
@@ -10683,15 +10673,10 @@ globalThis.RECALL_APP_DATA = {
           "id": "other",
           "label": "대사체 관계",
           "answer": "Terfenadine의 활성 대사체다."
-        },
-        {
-          "id": "caution",
-          "label": "주의 사항",
-          "answer": "뇌 이행이 적어 1세대 항히스타민제보다 진정 작용이 적다."
         }
       ],
       "reverse": {
-        "prompt": "표적: H1 수용체. 작용 기전: 2세대 역작용제다. 대사체 관계: Terfenadine의 활성 대사체다. 주의 사항: 뇌 이행이 적어 1세대 항히스타민제보다 진정 작용이 적다. 이 약물의 이름은?",
+        "prompt": "표적: H1 수용체 작용 기전: 2세대 역작용제다. 대사체 관계: Terfenadine의 활성 대사체다. 이 약물의 이름은?",
         "acceptedAnswers": [
           "Fexofenadine",
           "Allegra",
@@ -10990,7 +10975,7 @@ globalThis.RECALL_APP_DATA = {
       "unitId": "unit:21",
       "unitLabel": "21. 히스타민 약리",
       "importance": 3,
-      "version": "56e04ddcba90",
+      "version": "9684436b69ae",
       "fields": [
         {
           "id": "target",
@@ -11001,11 +10986,6 @@ globalThis.RECALL_APP_DATA = {
           "id": "mechanism",
           "label": "작용 기전",
           "answer": "2세대 역작용제다."
-        },
-        {
-          "id": "caution",
-          "label": "주의 사항",
-          "answer": "뇌로의 이행이 적어 1세대 약물보다 진정과 항콜린 작용이 적다."
         },
         {
           "id": "indication",
@@ -11052,24 +11032,19 @@ globalThis.RECALL_APP_DATA = {
     {
       "id": "metronidazole",
       "name": "Metronidazole",
-      "unitId": "unit:21",
-      "unitLabel": "21. 히스타민 약리",
+      "unitId": "unit:23",
+      "unitLabel": "23. 항생제 치료의 기본 원리",
       "importance": 3,
-      "version": "28bd4576a346",
+      "version": "9e5c62b1be09",
       "fields": [
         {
           "id": "mechanism",
           "label": "작용 기전",
           "answer": "반응성 라디칼을 만들어 미생물 DNA를 손상시키는 항균제다."
-        },
-        {
-          "id": "indication",
-          "label": "용도",
-          "answer": "H. pylori 제균 병용요법의 구성 약물 중 하나다."
         }
       ],
       "reverse": {
-        "prompt": "작용 기전: 반응성 라디칼을 만들어 미생물 DNA를 손상시키는 항균제다. 용도: H. pylori 제균 병용요법의 구성 약물 중 하나다. 이 약물의 이름은?",
+        "prompt": "작용 기전: 반응성 라디칼을 만들어 미생물 DNA를 손상시키는 항균제다. 이 약물의 이름은?",
         "acceptedAnswers": [
           "Metronidazole"
         ]
@@ -11498,7 +11473,7 @@ globalThis.RECALL_APP_DATA = {
       "unitId": "unit:21",
       "unitLabel": "21. 히스타민 약리",
       "importance": 1,
-      "version": "399591520085",
+      "version": "9636561a9824",
       "fields": [
         {
           "id": "target",
@@ -11514,11 +11489,6 @@ globalThis.RECALL_APP_DATA = {
           "id": "indication",
           "label": "용도",
           "answer": "알레르기 증상을 완화한다."
-        },
-        {
-          "id": "caution",
-          "label": "주의 사항",
-          "answer": "1세대보다 중추 진정과 항콜린 작용이 적다."
         }
       ],
       "reverse": null,
@@ -11680,10 +11650,10 @@ globalThis.RECALL_APP_DATA = {
     {
       "id": "tetracycline",
       "name": "Tetracycline",
-      "unitId": "unit:21",
-      "unitLabel": "21. 히스타민 약리",
+      "unitId": "unit:26",
+      "unitLabel": "26. 기타항생제",
       "importance": 3,
-      "version": "efe8212bbd81",
+      "version": "9e2ae1d697c1",
       "fields": [
         {
           "id": "target",
@@ -11694,11 +11664,6 @@ globalThis.RECALL_APP_DATA = {
           "id": "mechanism",
           "label": "작용 기전",
           "answer": "결합하여 aminoacyl-tRNA가 A site에 들어오는 것을 막아 단백질 합성을 억제한다."
-        },
-        {
-          "id": "indication",
-          "label": "용도",
-          "answer": "H. pylori 제균요법에도 포함될 수 있다."
         }
       ],
       "reverse": null,
