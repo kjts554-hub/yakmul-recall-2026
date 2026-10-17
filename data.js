@@ -1,6 +1,6 @@
-// Generated from the reviewed 2026-10-16 bank by build_data.py.
+// Generated from the reviewed bank and approved local corrections by build_data.py.
 globalThis.RECALL_APP_DATA = {
-  "version": "full-course-v1-2026-10-16",
+  "version": "full-course-v1-2026-10-16-unit16-v1-unit17-18-v1",
   "units": [
     {
       "id": "unit:1",
@@ -84,21 +84,21 @@ globalThis.RECALL_APP_DATA = {
       "label": "15. 중추신경계 질환 약리",
       "year": 2026,
       "fieldsCount": 77,
-      "nameCount": 12
+      "nameCount": 11
     },
     {
       "id": "unit:16",
       "label": "16. 내분비 약리 기초",
       "year": 2026,
-      "fieldsCount": 42,
-      "nameCount": 10
+      "fieldsCount": 52,
+      "nameCount": 20
     },
     {
       "id": "unit:17-18",
       "label": "17-18. 체액 및 전해질 조절 약물",
       "year": 2026,
-      "fieldsCount": 11,
-      "nameCount": 4
+      "fieldsCount": 12,
+      "nameCount": 5
     },
     {
       "id": "unit:19-20",
@@ -6764,35 +6764,20 @@ globalThis.RECALL_APP_DATA = {
       "name": "Ketamine",
       "unitId": "unit:15",
       "unitLabel": "15. 중추신경계 질환 약리",
-      "importance": 3,
-      "version": "36e06002f0f4",
+      "importance": 1,
+      "version": "bd2fc1e63c81",
       "fields": [
         {
-          "id": "target",
-          "label": "표적",
-          "answer": "NMDA 수용체"
-        },
-        {
-          "id": "mechanism",
-          "label": "작용 기전",
-          "answer": "수용체를 차단해 해리성 마취를 일으키는 정맥마취제다."
-        },
-        {
-          "id": "indication",
-          "label": "용도",
-          "answer": "마취 유도와 수술 중 마취에 사용한다."
+          "id": "other",
+          "label": "분류",
+          "answer": "정맥마취제"
         }
       ],
-      "reverse": {
-        "prompt": "NMDA 수용체를 차단해 해리성 마취를 일으키는 정맥마취제로 마취 유도와 수술 중 마취에 사용한다.",
-        "acceptedAnswers": [
-          "Ketamine"
-        ]
-      },
+      "reverse": null,
       "sourceYears": [
         2026
       ],
-      "correctionNote": "모든 마취제가 GABA 증강으로 작용한다는 요약에서 NMDA 관련 해리성 정맥마취를 구별하도록 이미 승인된 최소정정(R376)을 유지한다."
+      "correctionNote": null
     },
     {
       "id": "lamotrigine",
@@ -8034,7 +8019,7 @@ globalThis.RECALL_APP_DATA = {
       "name": "Acarbose",
       "unitId": "unit:16",
       "unitLabel": "16. 내분비 약리 기초",
-      "importance": 2,
+      "importance": 1,
       "version": "22dbc739a91c",
       "fields": [
         {
@@ -8094,7 +8079,7 @@ globalThis.RECALL_APP_DATA = {
       "name": "Alogliptin",
       "unitId": "unit:16",
       "unitLabel": "16. 내분비 약리 기초",
-      "importance": 2,
+      "importance": 1,
       "version": "902db9f21745",
       "fields": [
         {
@@ -8154,7 +8139,7 @@ globalThis.RECALL_APP_DATA = {
       "name": "Canagliflozin",
       "unitId": "unit:16",
       "unitLabel": "16. 내분비 약리 기초",
-      "importance": 2,
+      "importance": 1,
       "version": "db8163e0aa3b",
       "fields": [
         {
@@ -8214,7 +8199,7 @@ globalThis.RECALL_APP_DATA = {
       "name": "Dapagliflozin",
       "unitId": "unit:16",
       "unitLabel": "16. 내분비 약리 기초",
-      "importance": 3,
+      "importance": 1,
       "version": "21b83db08456",
       "fields": [
         {
@@ -8239,7 +8224,7 @@ globalThis.RECALL_APP_DATA = {
       "name": "Desmopressin",
       "unitId": "unit:16",
       "unitLabel": "16. 내분비 약리 기초",
-      "importance": 3,
+      "importance": 1,
       "version": "126210493e0a",
       "fields": [
         {
@@ -8269,7 +8254,7 @@ globalThis.RECALL_APP_DATA = {
       "name": "Dulaglutide",
       "unitId": "unit:16",
       "unitLabel": "16. 내분비 약리 기초",
-      "importance": 3,
+      "importance": 1,
       "version": "3e705fb44698",
       "fields": [
         {
@@ -8304,7 +8289,7 @@ globalThis.RECALL_APP_DATA = {
       "name": "Empagliflozin",
       "unitId": "unit:16",
       "unitLabel": "16. 내분비 약리 기초",
-      "importance": 3,
+      "importance": 1,
       "version": "21b83db08456",
       "fields": [
         {
@@ -8329,7 +8314,7 @@ globalThis.RECALL_APP_DATA = {
       "name": "Ertugliflozin",
       "unitId": "unit:16",
       "unitLabel": "16. 내분비 약리 기초",
-      "importance": 2,
+      "importance": 1,
       "version": "db8163e0aa3b",
       "fields": [
         {
@@ -8359,7 +8344,7 @@ globalThis.RECALL_APP_DATA = {
       "name": "Exenatide",
       "unitId": "unit:16",
       "unitLabel": "16. 내분비 약리 기초",
-      "importance": 2,
+      "importance": 1,
       "version": "226c7bc4ea32",
       "fields": [
         {
@@ -8389,7 +8374,7 @@ globalThis.RECALL_APP_DATA = {
       "name": "Glimepiride",
       "unitId": "unit:16",
       "unitLabel": "16. 내분비 약리 기초",
-      "importance": 3,
+      "importance": 1,
       "version": "646f83b64b45",
       "fields": [
         {
@@ -8419,7 +8404,7 @@ globalThis.RECALL_APP_DATA = {
       "name": "Glipizide",
       "unitId": "unit:16",
       "unitLabel": "16. 내분비 약리 기초",
-      "importance": 2,
+      "importance": 1,
       "version": "52da7c815361",
       "fields": [
         {
@@ -8449,7 +8434,7 @@ globalThis.RECALL_APP_DATA = {
       "name": "Glucagon",
       "unitId": "unit:16",
       "unitLabel": "16. 내분비 약리 기초",
-      "importance": 3,
+      "importance": 1,
       "version": "aab721b01a53",
       "fields": [
         {
@@ -8480,7 +8465,7 @@ globalThis.RECALL_APP_DATA = {
       "name": "Glyburide",
       "unitId": "unit:16",
       "unitLabel": "16. 내분비 약리 기초",
-      "importance": 2,
+      "importance": 1,
       "version": "ab94e1d7b5b2",
       "fields": [
         {
@@ -8510,7 +8495,7 @@ globalThis.RECALL_APP_DATA = {
       "name": "Insulin",
       "unitId": "unit:16",
       "unitLabel": "16. 내분비 약리 기초",
-      "importance": 3,
+      "importance": 1,
       "version": "b88dcda10ce1",
       "fields": [
         {
@@ -8535,7 +8520,7 @@ globalThis.RECALL_APP_DATA = {
       "name": "Insulin aspart",
       "unitId": "unit:16",
       "unitLabel": "16. 내분비 약리 기초",
-      "importance": 3,
+      "importance": 1,
       "version": "e74da250186b",
       "fields": [
         {
@@ -8560,7 +8545,7 @@ globalThis.RECALL_APP_DATA = {
       "name": "Insulin degludec",
       "unitId": "unit:16",
       "unitLabel": "16. 내분비 약리 기초",
-      "importance": 3,
+      "importance": 1,
       "version": "ce82aa082dde",
       "fields": [
         {
@@ -8585,7 +8570,7 @@ globalThis.RECALL_APP_DATA = {
       "name": "Insulin detemir",
       "unitId": "unit:16",
       "unitLabel": "16. 내분비 약리 기초",
-      "importance": 2,
+      "importance": 1,
       "version": "adaa344a521f",
       "fields": [
         {
@@ -8610,7 +8595,7 @@ globalThis.RECALL_APP_DATA = {
       "name": "Insulin glargine",
       "unitId": "unit:16",
       "unitLabel": "16. 내분비 약리 기초",
-      "importance": 3,
+      "importance": 1,
       "version": "ce76099c65d4",
       "fields": [
         {
@@ -8641,7 +8626,7 @@ globalThis.RECALL_APP_DATA = {
       "name": "Insulin glulisine",
       "unitId": "unit:16",
       "unitLabel": "16. 내분비 약리 기초",
-      "importance": 2,
+      "importance": 1,
       "version": "b1c2170abd1a",
       "fields": [
         {
@@ -8666,7 +8651,7 @@ globalThis.RECALL_APP_DATA = {
       "name": "Insulin lispro",
       "unitId": "unit:16",
       "unitLabel": "16. 내분비 약리 기초",
-      "importance": 3,
+      "importance": 1,
       "version": "ea4261e5b61d",
       "fields": [
         {
@@ -8691,7 +8676,7 @@ globalThis.RECALL_APP_DATA = {
       "name": "Linagliptin",
       "unitId": "unit:16",
       "unitLabel": "16. 내분비 약리 기초",
-      "importance": 2,
+      "importance": 1,
       "version": "d76c9fb4cb79",
       "fields": [
         {
@@ -8726,7 +8711,7 @@ globalThis.RECALL_APP_DATA = {
       "name": "Liraglutide",
       "unitId": "unit:16",
       "unitLabel": "16. 내분비 약리 기초",
-      "importance": 3,
+      "importance": 1,
       "version": "dd5de198200a",
       "fields": [
         {
@@ -8761,7 +8746,7 @@ globalThis.RECALL_APP_DATA = {
       "name": "Lixisenatide",
       "unitId": "unit:16",
       "unitLabel": "16. 내분비 약리 기초",
-      "importance": 2,
+      "importance": 1,
       "version": "1b9f60b54c14",
       "fields": [
         {
@@ -8786,7 +8771,7 @@ globalThis.RECALL_APP_DATA = {
       "name": "Metformin",
       "unitId": "unit:16",
       "unitLabel": "16. 내분비 약리 기초",
-      "importance": 3,
+      "importance": 1,
       "version": "a944514cb7fe",
       "fields": [
         {
@@ -8886,7 +8871,7 @@ globalThis.RECALL_APP_DATA = {
       "name": "NPH insulin",
       "unitId": "unit:16",
       "unitLabel": "16. 내분비 약리 기초",
-      "importance": 3,
+      "importance": 1,
       "version": "8f313a268164",
       "fields": [
         {
@@ -8916,7 +8901,7 @@ globalThis.RECALL_APP_DATA = {
       "name": "Phenformin",
       "unitId": "unit:16",
       "unitLabel": "16. 내분비 약리 기초",
-      "importance": 2,
+      "importance": 1,
       "version": "225400798506",
       "fields": [
         {
@@ -8946,7 +8931,7 @@ globalThis.RECALL_APP_DATA = {
       "name": "Pioglitazone",
       "unitId": "unit:16",
       "unitLabel": "16. 내분비 약리 기초",
-      "importance": 3,
+      "importance": 1,
       "version": "31f129c77331",
       "fields": [
         {
@@ -8976,7 +8961,7 @@ globalThis.RECALL_APP_DATA = {
       "name": "Regular insulin",
       "unitId": "unit:16",
       "unitLabel": "16. 내분비 약리 기초",
-      "importance": 3,
+      "importance": 1,
       "version": "a80383a9d5a0",
       "fields": [
         {
@@ -9006,7 +8991,7 @@ globalThis.RECALL_APP_DATA = {
       "name": "Repaglinide",
       "unitId": "unit:16",
       "unitLabel": "16. 내분비 약리 기초",
-      "importance": 2,
+      "importance": 1,
       "version": "5acd371132e8",
       "fields": [
         {
@@ -9036,7 +9021,7 @@ globalThis.RECALL_APP_DATA = {
       "name": "Rosiglitazone",
       "unitId": "unit:16",
       "unitLabel": "16. 내분비 약리 기초",
-      "importance": 2,
+      "importance": 1,
       "version": "75a656c9a893",
       "fields": [
         {
@@ -9066,7 +9051,7 @@ globalThis.RECALL_APP_DATA = {
       "name": "Saxagliptin",
       "unitId": "unit:16",
       "unitLabel": "16. 내분비 약리 기초",
-      "importance": 2,
+      "importance": 1,
       "version": "90051cea87c9",
       "fields": [
         {
@@ -9096,7 +9081,7 @@ globalThis.RECALL_APP_DATA = {
       "name": "Semaglutide",
       "unitId": "unit:16",
       "unitLabel": "16. 내분비 약리 기초",
-      "importance": 3,
+      "importance": 1,
       "version": "a0ce637ed79e",
       "fields": [
         {
@@ -9131,7 +9116,7 @@ globalThis.RECALL_APP_DATA = {
       "name": "Sitagliptin",
       "unitId": "unit:16",
       "unitLabel": "16. 내분비 약리 기초",
-      "importance": 3,
+      "importance": 1,
       "version": "c8d0f6e816c0",
       "fields": [
         {
@@ -9156,7 +9141,7 @@ globalThis.RECALL_APP_DATA = {
       "name": "Tirzepatide",
       "unitId": "unit:16",
       "unitLabel": "16. 내분비 약리 기초",
-      "importance": 3,
+      "importance": 1,
       "version": "aff48bfaae59",
       "fields": [
         {
@@ -9191,7 +9176,7 @@ globalThis.RECALL_APP_DATA = {
       "name": "Tolbutamide",
       "unitId": "unit:16",
       "unitLabel": "16. 내분비 약리 기초",
-      "importance": 2,
+      "importance": 1,
       "version": "1cd7de15cba9",
       "fields": [
         {
@@ -9221,7 +9206,7 @@ globalThis.RECALL_APP_DATA = {
       "name": "Vildagliptin",
       "unitId": "unit:16",
       "unitLabel": "16. 내분비 약리 기초",
-      "importance": 2,
+      "importance": 1,
       "version": "1fd72465cbc7",
       "fields": [
         {
@@ -9287,8 +9272,13 @@ globalThis.RECALL_APP_DATA = {
       "unitId": "unit:17-18",
       "unitLabel": "17-18. 체액 및 전해질 조절 약물",
       "importance": 3,
-      "version": "4408d51a9b25",
+      "version": "4c28fb621880",
       "fields": [
+        {
+          "id": "classification",
+          "label": "분류",
+          "answer": "CA inhibitor"
+        },
         {
           "id": "target",
           "label": "표적",
@@ -9297,7 +9287,7 @@ globalThis.RECALL_APP_DATA = {
         {
           "id": "mechanism",
           "label": "작용 기전",
-          "answer": "억제해 중탄산염 배설을 늘리는 이뇨제다."
+          "answer": "효소를 억제해 중탄산염 배설을 늘린다."
         },
         {
           "id": "indication",
@@ -9311,7 +9301,7 @@ globalThis.RECALL_APP_DATA = {
         }
       ],
       "reverse": {
-        "prompt": "표적: Carbonic anhydrase. 작용 기전: 억제해 중탄산염 배설을 늘리는 이뇨제다. 용도: 녹내장과 고산병 등에 사용한다. 주의 사항: 중탄산염 소실로 대사성 산증이 나타날 수 있다. 이 약물의 이름은?",
+        "prompt": "분류: CA inhibitor 표적: Carbonic anhydrase 작용 기전: 효소를 억제해 중탄산염 배설을 늘린다. 용도: 녹내장과 고산병 등에 사용한다. 주의 사항: 중탄산염 소실로 대사성 산증이 나타날 수 있다. 이 약물의 이름은?",
         "acceptedAnswers": [
           "Acetazolamide",
           "Diamox"
@@ -9328,8 +9318,13 @@ globalThis.RECALL_APP_DATA = {
       "unitId": "unit:17-18",
       "unitLabel": "17-18. 체액 및 전해질 조절 약물",
       "importance": 3,
-      "version": "1da4b6f68b34",
+      "version": "731258b677c3",
       "fields": [
+        {
+          "id": "classification",
+          "label": "분류",
+          "answer": "K+ sparing diuretics"
+        },
         {
           "id": "target",
           "label": "표적",
@@ -9338,7 +9333,7 @@ globalThis.RECALL_APP_DATA = {
         {
           "id": "mechanism",
           "label": "작용 기전",
-          "answer": "통로를 차단하는 칼륨보존성 이뇨제로 Na 배설을 늘리고 K 배설을 줄인다."
+          "answer": "통로를 차단해 Na⁺ 배설을 늘리고 K⁺ 배설을 줄인다."
         },
         {
           "id": "caution",
@@ -9358,8 +9353,13 @@ globalThis.RECALL_APP_DATA = {
       "unitId": "unit:17-18",
       "unitLabel": "17-18. 체액 및 전해질 조절 약물",
       "importance": 3,
-      "version": "ca9916448106",
+      "version": "aafc534ac391",
       "fields": [
+        {
+          "id": "classification",
+          "label": "분류",
+          "answer": "Loop diuretics"
+        },
         {
           "id": "target",
           "label": "표적",
@@ -9368,7 +9368,7 @@ globalThis.RECALL_APP_DATA = {
         {
           "id": "mechanism",
           "label": "작용 기전",
-          "answer": "공동수송체를 억제하는 고리이뇨제로 이 부위의 NaCl 재흡수를 줄여 이뇨를 일으킨다."
+          "answer": "공동수송체를 억제해 이 부위의 NaCl 재흡수를 줄여 이뇨를 일으킨다."
         }
       ],
       "reverse": null,
@@ -9383,8 +9383,13 @@ globalThis.RECALL_APP_DATA = {
       "unitId": "unit:17-18",
       "unitLabel": "17-18. 체액 및 전해질 조절 약물",
       "importance": 3,
-      "version": "e26a25a8b641",
+      "version": "2877e2c123a6",
       "fields": [
+        {
+          "id": "classification",
+          "label": "분류",
+          "answer": "Loop diuretics"
+        },
         {
           "id": "target",
           "label": "표적",
@@ -9393,7 +9398,7 @@ globalThis.RECALL_APP_DATA = {
         {
           "id": "mechanism",
           "label": "작용 기전",
-          "answer": "공동수송체를 억제하는 고리이뇨제다."
+          "answer": "공동수송체를 억제해 NaCl 재흡수를 줄인다."
         },
         {
           "id": "indication",
@@ -9418,12 +9423,17 @@ globalThis.RECALL_APP_DATA = {
       "unitId": "unit:17-18",
       "unitLabel": "17-18. 체액 및 전해질 조절 약물",
       "importance": 2,
-      "version": "d03ededc712f",
+      "version": "9c3dea57b5fc",
       "fields": [
+        {
+          "id": "classification",
+          "label": "분류",
+          "answer": "Osmotic diuretics"
+        },
         {
           "id": "mechanism",
           "label": "작용 기전",
-          "answer": "삼투성 이뇨제로 사용한다."
+          "answer": "사구체에서 여과되고 세뇨관에서 재흡수되지 않아 세뇨관 내 삼투압을 높인다."
         },
         {
           "id": "caution",
@@ -9432,7 +9442,7 @@ globalThis.RECALL_APP_DATA = {
         }
       ],
       "reverse": {
-        "prompt": "작용 기전: 삼투성 이뇨제로 사용한다. 주의 사항: 혈당 상승에 주의한다. 이 약물의 이름은?",
+        "prompt": "분류: Osmotic diuretics 작용 기전: 사구체에서 여과되고 세뇨관에서 재흡수되지 않아 세뇨관 내 삼투압을 높인다. 주의 사항: 혈당 상승에 주의한다. 이 약물의 이름은?",
         "acceptedAnswers": [
           "Glycerin"
         ]
@@ -9448,12 +9458,17 @@ globalThis.RECALL_APP_DATA = {
       "unitId": "unit:17-18",
       "unitLabel": "17-18. 체액 및 전해질 조절 약물",
       "importance": 2,
-      "version": "96f34504f7ca",
+      "version": "951b3cd008c1",
       "fields": [
+        {
+          "id": "classification",
+          "label": "분류",
+          "answer": "Osmotic diuretics"
+        },
         {
           "id": "mechanism",
           "label": "작용 기전",
-          "answer": "삼투성 이뇨제로 사구체에서 여과되고 세뇨관에서 재흡수되지 않는다."
+          "answer": "사구체에서 여과되고 세뇨관에서 재흡수되지 않아 세뇨관 내 삼투압을 높인다."
         }
       ],
       "reverse": null,
@@ -9468,12 +9483,17 @@ globalThis.RECALL_APP_DATA = {
       "unitId": "unit:17-18",
       "unitLabel": "17-18. 체액 및 전해질 조절 약물",
       "importance": 3,
-      "version": "12db93769979",
+      "version": "d136e6cbe63d",
       "fields": [
+        {
+          "id": "classification",
+          "label": "분류",
+          "answer": "Osmotic diuretics"
+        },
         {
           "id": "mechanism",
           "label": "작용 기전",
-          "answer": "사구체에서 여과되어 세뇨관 내 삼투압을 높이는 삼투성 이뇨제다."
+          "answer": "사구체에서 여과되어 세뇨관 내 삼투압을 높인다."
         },
         {
           "id": "indication",
@@ -9498,8 +9518,13 @@ globalThis.RECALL_APP_DATA = {
       "unitId": "unit:17-18",
       "unitLabel": "17-18. 체액 및 전해질 조절 약물",
       "importance": 3,
-      "version": "76b70737c91b",
+      "version": "4c8af34c8d20",
       "fields": [
+        {
+          "id": "classification",
+          "label": "분류",
+          "answer": "K+ sparing diuretics"
+        },
         {
           "id": "target",
           "label": "표적",
@@ -9508,7 +9533,7 @@ globalThis.RECALL_APP_DATA = {
         {
           "id": "mechanism",
           "label": "작용 기전",
-          "answer": "수용체를 차단하는 칼륨보존성 이뇨제다."
+          "answer": "수용체를 차단한다."
         },
         {
           "id": "indication",
@@ -9522,7 +9547,7 @@ globalThis.RECALL_APP_DATA = {
         }
       ],
       "reverse": {
-        "prompt": "표적: Aldosterone 수용체. 작용 기전: 수용체를 차단하는 칼륨보존성 이뇨제다. 용도: 고알도스테론증과 간경변의 체액 저류에 사용한다. 주의 사항: 고칼륨혈증에 주의해야 한다. 이 약물의 이름은?",
+        "prompt": "분류: K+ sparing diuretics 표적: Aldosterone 수용체 작용 기전: 수용체를 차단한다. 용도: 고알도스테론증과 간경변의 체액 저류에 사용한다. 주의 사항: 고칼륨혈증에 주의해야 한다. 이 약물의 이름은?",
         "acceptedAnswers": [
           "Spironolactone",
           "Aldactone"
@@ -9539,8 +9564,13 @@ globalThis.RECALL_APP_DATA = {
       "unitId": "unit:17-18",
       "unitLabel": "17-18. 체액 및 전해질 조절 약물",
       "importance": 3,
-      "version": "72d776c93853",
+      "version": "f961cbdedb3b",
       "fields": [
+        {
+          "id": "classification",
+          "label": "분류",
+          "answer": "K+ sparing diuretics"
+        },
         {
           "id": "target",
           "label": "표적",
@@ -9549,7 +9579,7 @@ globalThis.RECALL_APP_DATA = {
         {
           "id": "mechanism",
           "label": "작용 기전",
-          "answer": "통로를 억제하는 칼륨보존 이뇨제로 Na⁺ 재흡수를 줄이고 K⁺ 배설을 억제한다."
+          "answer": "통로를 억제해 Na⁺ 재흡수를 줄이고 K⁺ 배설을 억제한다."
         }
       ],
       "reverse": null,
@@ -9564,12 +9594,17 @@ globalThis.RECALL_APP_DATA = {
       "unitId": "unit:17-18",
       "unitLabel": "17-18. 체액 및 전해질 조절 약물",
       "importance": 2,
-      "version": "892d90942d58",
+      "version": "e5f961b608f4",
       "fields": [
+        {
+          "id": "classification",
+          "label": "분류",
+          "answer": "Osmotic diuretics"
+        },
         {
           "id": "mechanism",
           "label": "작용 기전",
-          "answer": "삼투성 이뇨제로 사용한다."
+          "answer": "사구체에서 여과되고 세뇨관에서 재흡수되지 않아 세뇨관 내 삼투압을 높인다."
         },
         {
           "id": "caution",
@@ -9578,7 +9613,7 @@ globalThis.RECALL_APP_DATA = {
         }
       ],
       "reverse": {
-        "prompt": "작용 기전: 삼투성 이뇨제로 사용한다. 주의 사항: 정맥 투여 부위의 정맥염·혈전증과 Ammonia 증가에 주의한다. 이 약물의 이름은?",
+        "prompt": "분류: Osmotic diuretics 작용 기전: 사구체에서 여과되고 세뇨관에서 재흡수되지 않아 세뇨관 내 삼투압을 높인다. 주의 사항: 정맥 투여 부위의 정맥염·혈전증과 Ammonia 증가에 주의한다. 이 약물의 이름은?",
         "acceptedAnswers": [
           "Urea"
         ]
@@ -27343,6 +27378,496 @@ globalThis.RECALL_APP_DATA = {
       },
       "sourceYears": [
         2025,
+        2026
+      ],
+      "correctionNote": null
+    },
+    {
+      "id": "unit16_core_insulin",
+      "name": "Insulin",
+      "unitId": "unit:16",
+      "unitLabel": "16. 내분비 약리 기초",
+      "importance": 3,
+      "version": "27463ce4eb66",
+      "fields": [
+        {
+          "id": "mechanism",
+          "label": "작용 기전",
+          "answer": "부족한 내인성 insulin을 보충한다. 근육·지방조직의 포도당 흡수를 늘리고 간의 포도당 생성을 줄여 혈당을 낮춘다."
+        },
+        {
+          "id": "indication",
+          "label": "용도",
+          "answer": "제1형 당뇨병에 필수적이며, 제2형 당뇨병에서도 insulin 분비가 부족하거나 심한 고혈당이 있을 때 사용한다."
+        },
+        {
+          "id": "adverse_effect",
+          "label": "주요 부작용",
+          "answer": "저혈당, 체중 증가. 저혈당은 가장 중요한 용량 제한 독성이다."
+        }
+      ],
+      "reverse": {
+        "prompt": "부족한 내인성 호르몬을 보충해 근육·지방조직의 포도당 흡수를 늘리고 간의 포도당 생성을 줄인다. 제1형 당뇨병에 필수적이며 저혈당과 체중 증가가 주요 부작용이다. 이 보충요법에 사용하는 호르몬명은?",
+        "acceptedAnswers": [
+          "Insulin",
+          "인슐린"
+        ]
+      },
+      "sourceYears": [
+        2026
+      ],
+      "correctionNote": null
+    },
+    {
+      "id": "unit16_core_sulfonylurea",
+      "name": "Sulfonylurea",
+      "unitId": "unit:16",
+      "unitLabel": "16. 내분비 약리 기초",
+      "importance": 3,
+      "version": "0afebcde05e4",
+      "fields": [
+        {
+          "id": "classification",
+          "label": "분류",
+          "answer": "Insulin 분비 촉진제."
+        },
+        {
+          "id": "target",
+          "label": "표적",
+          "answer": "췌장 β세포의 ATP-sensitive K⁺ channel(KATP channel)에 있는 SUR1."
+        },
+        {
+          "id": "mechanism",
+          "label": "작용 기전",
+          "answer": "SUR1에 결합해 KATP channel을 닫는다. 세포막 탈분극 → 전압 의존성 Ca²⁺ channel 개방 → Ca²⁺ 유입 → insulin 분비 증가로 이어진다."
+        },
+        {
+          "id": "adverse_effect",
+          "label": "주요 부작용",
+          "answer": "저혈당, 체중 증가. 혈당이 낮아도 insulin 분비를 촉진할 수 있어 저혈당 위험이 있다."
+        }
+      ],
+      "reverse": {
+        "prompt": "췌장 β세포 KATP channel의 SUR1에 결합해 통로를 닫고 insulin 분비를 늘린다. 저혈당과 체중 증가가 주요 부작용이다. Meglitinide를 제외하면 이에 해당하는 약물 계열은?",
+        "acceptedAnswers": [
+          "Sulfonylurea",
+          "Sulfonylureas",
+          "SU",
+          "SUs",
+          "설포닐유레아",
+          "설포닐유레아계"
+        ]
+      },
+      "sourceYears": [
+        2026
+      ],
+      "correctionNote": null
+    },
+    {
+      "id": "unit16_core_metformin",
+      "name": "Metformin",
+      "unitId": "unit:16",
+      "unitLabel": "16. 내분비 약리 기초",
+      "importance": 3,
+      "version": "d1c2b6a6acbf",
+      "fields": [
+        {
+          "id": "classification",
+          "label": "분류",
+          "answer": "Biguanide."
+        },
+        {
+          "id": "mechanism",
+          "label": "작용 기전",
+          "answer": "간의 포도당신생을 억제하고 말초조직의 insulin 감수성을 높여 혈당을 낮춘다."
+        },
+        {
+          "id": "other",
+          "label": "특징",
+          "answer": "경구 투여하며, 단독 사용 시 저혈당 위험이 낮다. 체중은 대체로 유지되거나 소폭 감소한다."
+        },
+        {
+          "id": "caution",
+          "label": "주의사항",
+          "answer": "신기능 저하 시 사용이 제한된다. 신기능이 심하게 저하된 경우에는 금기이다."
+        }
+      ],
+      "reverse": {
+        "prompt": "Biguanide 계열의 대표적인 경구 혈당강하제이다. 간의 포도당신생을 억제하고 말초조직의 insulin 감수성을 높인다. 신기능 저하 시 사용이 제한된다. 약물명은?",
+        "acceptedAnswers": [
+          "Metformin",
+          "메트포르민"
+        ]
+      },
+      "sourceYears": [
+        2026
+      ],
+      "correctionNote": null
+    },
+    {
+      "id": "unit16_core_thiazolidinedione",
+      "name": "Thiazolidinedione",
+      "unitId": "unit:16",
+      "unitLabel": "16. 내분비 약리 기초",
+      "importance": 3,
+      "version": "188525afbc11",
+      "fields": [
+        {
+          "id": "classification",
+          "label": "분류",
+          "answer": "Insulin 감수성 개선제(insulin sensitizer)."
+        },
+        {
+          "id": "target",
+          "label": "표적",
+          "answer": "핵수용체인 PPAR-γ."
+        },
+        {
+          "id": "mechanism",
+          "label": "작용 기전",
+          "answer": "PPAR-γ의 효현제로 작용해 관련 유전자 발현을 조절하고, 근육·간·지방조직의 insulin 감수성을 높인다."
+        },
+        {
+          "id": "adverse_effect",
+          "label": "주요 부작용",
+          "answer": "체중 증가, 체액 저류·부종. 심부전을 악화시킬 수 있다."
+        }
+      ],
+      "reverse": {
+        "prompt": "핵수용체인 PPAR-γ의 효현제로 작용해 insulin 감수성을 높인다. 체중 증가와 체액 저류·부종을 일으키고 심부전을 악화시킬 수 있다. 약물 계열은?",
+        "acceptedAnswers": [
+          "Thiazolidinedione",
+          "Thiazolidinediones",
+          "TZD",
+          "TZDs",
+          "티아졸리딘디온",
+          "티아졸리딘디온계"
+        ]
+      },
+      "sourceYears": [
+        2026
+      ],
+      "correctionNote": null
+    },
+    {
+      "id": "unit16_core_alpha_glucosidase_inhibitor",
+      "name": "α-Glucosidase inhibitor",
+      "unitId": "unit:16",
+      "unitLabel": "16. 내분비 약리 기초",
+      "importance": 3,
+      "version": "bb48e95b9377",
+      "fields": [
+        {
+          "id": "target",
+          "label": "표적",
+          "answer": "소장 솔가장자리(brush border)의 α-glucosidase."
+        },
+        {
+          "id": "mechanism",
+          "label": "작용 기전",
+          "answer": "탄수화물을 단당류로 분해하는 과정을 억제해 포도당 흡수를 지연시키고, 식후 혈당 상승을 줄인다."
+        },
+        {
+          "id": "adverse_effect",
+          "label": "주요 부작용",
+          "answer": "흡수되지 않은 탄수화물이 대장에서 발효되어 가스, 복부 팽만, 설사가 생길 수 있다."
+        },
+        {
+          "id": "contraindication",
+          "label": "금기",
+          "answer": "염증성 장질환 환자에게 사용하지 않는다."
+        }
+      ],
+      "reverse": {
+        "prompt": "소장 솔가장자리에서 탄수화물을 단당류로 분해하는 효소를 억제해 포도당 흡수를 지연시키고 식후 혈당 상승을 줄인다. 가스·복부 팽만·설사가 생길 수 있으며 염증성 장질환 환자에게 사용하지 않는다. 약물 계열은?",
+        "acceptedAnswers": [
+          "α-Glucosidase inhibitor",
+          "α-Glucosidase inhibitors",
+          "alpha-glucosidase inhibitor",
+          "alpha-glucosidase inhibitors",
+          "a-glucosidase inhibitor",
+          "a-glucosidase inhibitors",
+          "AGI",
+          "α-glucosidase 억제제",
+          "alpha-glucosidase 억제제",
+          "알파글루코시다아제 억제제"
+        ]
+      },
+      "sourceYears": [
+        2026
+      ],
+      "correctionNote": null
+    },
+    {
+      "id": "unit16_core_glp1_receptor_agonist",
+      "name": "GLP-1 receptor agonist",
+      "unitId": "unit:16",
+      "unitLabel": "16. 내분비 약리 기초",
+      "importance": 3,
+      "version": "71ea6429d26a",
+      "fields": [
+        {
+          "id": "target",
+          "label": "표적",
+          "answer": "GLP-1 receptor."
+        },
+        {
+          "id": "mechanism",
+          "label": "작용 기전",
+          "answer": "GLP-1 receptor를 활성화해 혈당 의존적으로 insulin 분비를 늘리고 glucagon 분비를 줄인다."
+        },
+        {
+          "id": "effect",
+          "label": "주요 효과",
+          "answer": "위 배출을 지연시키고 포만감을 높여 식사량과 체중을 줄인다. 단독 사용 시 저혈당 위험은 낮다."
+        },
+        {
+          "id": "adverse_effect",
+          "label": "주요 부작용",
+          "answer": "오심·구토·설사 등의 위장관 장애. 드물지만 중요한 부작용은 췌장염이다."
+        }
+      ],
+      "reverse": {
+        "prompt": "GLP-1 receptor를 활성화해 혈당 의존적으로 insulin 분비를 늘리고 glucagon 분비를 줄인다. 위 배출을 지연시키고 포만감을 높여 식사량과 체중을 줄이는 약물 계열은?",
+        "acceptedAnswers": [
+          "GLP-1 receptor agonist",
+          "GLP-1 receptor agonists",
+          "GLP-1 RA",
+          "GLP-1 RAs",
+          "GLP-1 agonist",
+          "GLP-1 agonists",
+          "GLP-1 analogue",
+          "GLP-1 analog",
+          "GLP-1 수용체 효현제",
+          "GLP-1 수용체 작용제"
+        ]
+      },
+      "sourceYears": [
+        2026
+      ],
+      "correctionNote": null
+    },
+    {
+      "id": "unit16_core_tirzepatide",
+      "name": "Tirzepatide",
+      "unitId": "unit:16",
+      "unitLabel": "16. 내분비 약리 기초",
+      "importance": 3,
+      "version": "18945500c13a",
+      "fields": [
+        {
+          "id": "target",
+          "label": "표적",
+          "answer": "GIP receptor와 GLP-1 receptor."
+        },
+        {
+          "id": "mechanism",
+          "label": "작용 기전",
+          "answer": "두 수용체를 함께 활성화하는 이중 효현제(dual agonist)이다. 혈당 의존적으로 insulin 분비를 촉진한다."
+        },
+        {
+          "id": "effect",
+          "label": "주요 효과",
+          "answer": "혈당과 체중을 낮추는 효과가 크다. 위 배출 지연과 식욕 감소에도 관여한다. 단독 사용 시 저혈당 위험은 낮다."
+        },
+        {
+          "id": "adverse_effect",
+          "label": "주요 부작용",
+          "answer": "오심·설사 등의 위장관 장애. 드물지만 중요한 부작용은 췌장염이다."
+        }
+      ],
+      "reverse": {
+        "prompt": "GIP receptor와 GLP-1 receptor를 함께 활성화하는 이중 효현제이다. 혈당 의존적으로 insulin 분비를 촉진하며 혈당과 체중을 낮추는 효과가 크다. 약물명은?",
+        "acceptedAnswers": [
+          "Tirzepatide"
+        ]
+      },
+      "sourceYears": [
+        2026
+      ],
+      "correctionNote": null
+    },
+    {
+      "id": "unit16_core_dpp4_inhibitor",
+      "name": "DPP-4 inhibitor",
+      "unitId": "unit:16",
+      "unitLabel": "16. 내분비 약리 기초",
+      "importance": 3,
+      "version": "8b1e199a3231",
+      "fields": [
+        {
+          "id": "target",
+          "label": "표적",
+          "answer": "Incretin을 분해하는 효소인 DPP-4."
+        },
+        {
+          "id": "mechanism",
+          "label": "작용 기전",
+          "answer": "DPP-4를 억제해 내인성 GLP-1·GIP의 분해를 줄이고 작용을 연장한다. 이에 따라 혈당 의존적으로 insulin 분비가 증가한다."
+        }
+      ],
+      "reverse": {
+        "prompt": "내인성 GLP-1·GIP를 분해하는 효소를 억제해 incretin의 작용을 연장하고, 혈당 의존적으로 insulin 분비를 늘리는 약물 계열은?",
+        "acceptedAnswers": [
+          "DPP-4 inhibitor",
+          "DPP-4 inhibitors",
+          "DPP-4i",
+          "DPP-4 억제제",
+          "Dipeptidyl peptidase-4 inhibitor",
+          "Dipeptidyl peptidase-4 inhibitors"
+        ]
+      },
+      "sourceYears": [
+        2026
+      ],
+      "correctionNote": null
+    },
+    {
+      "id": "unit16_core_sglt2_inhibitor",
+      "name": "SGLT2 inhibitor",
+      "unitId": "unit:16",
+      "unitLabel": "16. 내분비 약리 기초",
+      "importance": 3,
+      "version": "ce7e45a144fb",
+      "fields": [
+        {
+          "id": "target",
+          "label": "표적",
+          "answer": "신장 근위세뇨관의 SGLT2(Na⁺–glucose cotransporter 2)."
+        },
+        {
+          "id": "mechanism",
+          "label": "작용 기전",
+          "answer": "포도당 재흡수를 억제해 소변으로 포도당 배설을 늘린다."
+        },
+        {
+          "id": "adverse_effect",
+          "label": "주요 부작용",
+          "answer": "생식기 진균감염, 체액량 감소·저혈압. 기립성 저혈압과 어지럼이 나타날 수 있다. 드물게 정상혈당성 당뇨병성 케톤산증(euglycemic DKA)이 발생한다."
+        }
+      ],
+      "reverse": {
+        "prompt": "신장 근위세뇨관의 포도당 재흡수를 억제해 소변으로 포도당 배설을 늘린다. 생식기 진균감염과 체액량 감소·저혈압이 주요 부작용인 약물 계열은?",
+        "acceptedAnswers": [
+          "SGLT2 inhibitor",
+          "SGLT2 inhibitors",
+          "SGLT-2 inhibitor",
+          "SGLT-2 inhibitors",
+          "SGLT2i",
+          "SGLT2 억제제",
+          "SGLT-2 억제제",
+          "Sodium-glucose cotransporter 2 inhibitor",
+          "Sodium-glucose cotransporter 2 inhibitors"
+        ]
+      },
+      "sourceYears": [
+        2026
+      ],
+      "correctionNote": null
+    },
+    {
+      "id": "unit16_core_meglitinide",
+      "name": "Meglitinide",
+      "unitId": "unit:16",
+      "unitLabel": "16. 내분비 약리 기초",
+      "importance": 3,
+      "version": "4ddf7f3d3298",
+      "fields": [
+        {
+          "id": "classification",
+          "label": "분류",
+          "answer": "빠르고 짧게 작용하는 insulin 분비 촉진제."
+        },
+        {
+          "id": "target",
+          "label": "표적",
+          "answer": "췌장 β세포의 KATP channel. SU와는 결합 부위가 다르다."
+        },
+        {
+          "id": "mechanism",
+          "label": "작용 기전",
+          "answer": "KATP channel을 닫아 세포막 탈분극과 Ca²⁺ 유입을 유도하고 insulin 분비를 늘린다."
+        },
+        {
+          "id": "other",
+          "label": "특징",
+          "answer": "작용 시작이 빠르고 지속시간이 짧아 매 식사 전에 복용한다. 주로 식후 혈당을 조절한다."
+        },
+        {
+          "id": "adverse_effect",
+          "label": "주요 부작용",
+          "answer": "저혈당, 체중 증가."
+        }
+      ],
+      "reverse": {
+        "prompt": "췌장 β세포의 KATP channel에서 SU와 다른 부위에 결합해 통로를 닫고 insulin 분비를 늘린다. 작용 시작이 빠르고 지속시간이 짧아 매 식사 전에 복용하는 약물 계열은?",
+        "acceptedAnswers": [
+          "Meglitinide",
+          "Meglitinides",
+          "Glinide",
+          "Glinides",
+          "메글리티나이드",
+          "메글리티나이드계"
+        ]
+      },
+      "sourceYears": [
+        2026
+      ],
+      "correctionNote": null
+    },
+    {
+      "id": "unit17_18_thiazide",
+      "name": "Thiazide",
+      "unitId": "unit:17-18",
+      "unitLabel": "17-18. 체액 및 전해질 조절 약물",
+      "importance": 3,
+      "version": "db5ee78d96da",
+      "fields": [
+        {
+          "id": "classification",
+          "label": "분류",
+          "answer": "Thiazide"
+        },
+        {
+          "id": "target",
+          "label": "표적",
+          "answer": "원위세뇨관의 Na⁺–Cl⁻ 공동수송체"
+        },
+        {
+          "id": "mechanism",
+          "label": "작용 기전",
+          "answer": "공동수송체를 억제해 NaCl 재흡수를 줄이고 이뇨를 일으킨다."
+        },
+        {
+          "id": "other",
+          "label": "특징",
+          "answer": "Ca²⁺ 재흡수를 늘려 소변의 Ca²⁺ 배설을 줄인다. 신장 수질의 농도기울기를 낮추지 않아 이뇨 효과는 Loop diuretics보다 약하다."
+        },
+        {
+          "id": "indication",
+          "label": "용도",
+          "answer": "고혈압, 부종·심부전, 칼슘 결석 예방에 사용한다."
+        },
+        {
+          "id": "caution",
+          "label": "주의사항",
+          "answer": "저칼륨혈증과 탈수에 주의한다."
+        }
+      ],
+      "reverse": {
+        "prompt": "원위세뇨관의 Na⁺–Cl⁻ 공동수송체를 억제하는 이뇨제 계열이다. Ca²⁺ 재흡수를 늘려 소변의 Ca²⁺ 배설을 줄이며, 고혈압 치료와 칼슘 결석 예방에 사용한다. 이 계열의 이름은?",
+        "acceptedAnswers": [
+          "Thiazide",
+          "Thiazides",
+          "Thiazide diuretic",
+          "Thiazide diuretics",
+          "티아지드",
+          "티아지드계",
+          "티아지드 이뇨제",
+          "Thiazide계 이뇨제"
+        ]
+      },
+      "sourceYears": [
         2026
       ],
       "correctionNote": null
